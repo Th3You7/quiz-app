@@ -12,3 +12,8 @@ body {
   background-color: #011a25;
   font-family: "Helvetica Neue", sans-serif;
 }
+
+.selected {
+  color: #145d2e;
+  border-color: #145d2e;
+}
