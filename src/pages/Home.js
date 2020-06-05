@@ -1,6 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
+import { Link } from "react-router-dom";
 import Category from "../components/Category";
 import Header from "../components/Header";
+import Context from "../contexts/Context";
 import data from "../data/data";
 import styled from "styled-components";
 
@@ -15,6 +17,7 @@ const Wrapper = styled.div`
 `;
 
 const Home = () => {
+  const { handleClick } = useContext(Context);
   return (
     <Fragment>
       <Header>QuizUp</Header>
@@ -22,11 +25,13 @@ const Home = () => {
         {data.allCategories.map((categ, index) => {
           const category = data.categories[categ];
           return (
-            <Category
-              key={index}
-              img={category.img}
-              category={category.title}
-            />
+            <Link to="/test" key={index}>
+              <Category
+                img={category.img}
+                category={category.title}
+                onClick={() => handleClick(category.value)}
+              />
+            </Link>
           );
         })}
       </Wrapper>

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import createMarkup from "../utils/createMarkup";
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -14,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const Answer = ({ content }) => {
-  return <Wrapper>{content}</Wrapper>;
+  return <Wrapper dangerouslySetInnerHTML={createMarkup(content)} />;
 };
 
 export default Answer;

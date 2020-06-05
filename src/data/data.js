@@ -9,31 +9,31 @@ const data = {
   categories: {
     sport: {
       id: "sport",
-      value: "",
+      value: 21,
       title: "Sport",
       img: sport,
     },
     celebrities: {
       id: "celebrities",
-      value: "",
+      value: 26,
       title: "Celebrities",
       img: celebrities,
     },
     art: {
       id: "art",
-      value: "",
+      value: 25,
       title: "Art",
       img: art,
     },
     film: {
       id: "film",
-      value: "",
+      value: 11,
       title: "Film",
       img: film,
     },
     music: {
       id: "music",
-      value: "",
+      value: 12,
       title: "Music",
       img: music,
     },

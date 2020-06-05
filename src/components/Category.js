@@ -13,9 +13,9 @@ const Wrapper = styled.div`
   color: #023642;
   border-radius: 4px;
 `;
-const Category = ({ img, category }) => {
+const Category = ({ img, category, onClick }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClick}>
       <img src={img} alt="category" />
       <Title>{category}</Title>
     </Wrapper>

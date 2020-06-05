@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import Header from "../components/Header";
 import Button from "../components/Button";
+import Context from "../contexts/Context";
 import styled from "styled-components";
 import img from "../imgs/smiley.png";
 
@@ -28,6 +30,14 @@ const Span = styled.span`
 `;
 
 const Result = () => {
+  const { reset } = useContext(Context);
+  const history = useHistory();
+
+  const homePath = () => {
+    reset();
+    history.push("/");
+  };
+
   return (
     <>
       <Header>Result</Header>
@@ -36,7 +46,7 @@ const Result = () => {
       <Para>
         <Span>10{""}</Span>/{""}10
       </Para>
-      <Button>Start Over</Button>
+      <Button onClick={homePath}>Start Over</Button>
     </>
   );
 };

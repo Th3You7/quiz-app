@@ -1,6 +1,8 @@
-import React from "react";
-import Answer from "../components/Answer";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import Question from "../components/Question";
 import Button from "../components/Button";
+import Context from "../contexts/Context";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -12,46 +14,26 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const QuestionNum = styled.p`
-  color: #373d46;
-  font-size: 24px;
-  font-weight: 400;
-  margin-bottom: 32px;
-  padding-bottom: 16px;
-  border-bottom: 4px dashed #373d46;
-`;
-const Num = styled.span`
-  font-size: 32px;
-  color: #b1b1b1;
-  font-weight: 600;
-`;
-const Question = styled.p`
-  font-size: 24px;
-  font-weight: 600;
-  min-height: 100px;
-  margin: 0;
-  color: #f1f1f1;
-  text-transform: capitalize;
-`;
-
 const Test = () => {
-  return (
-    <Wrapper>
-      <QuestionNum>
-        <Num>Question 8</Num>/10
-      </QuestionNum>
-      <Question>who is ronaldo of brazil ?</Question>
-      {[
-        "am i a joke?",
-        "i aint normal nigga",
-        "all my niggas millis",
-        "i promise they ant like this",
-      ].map((item, index) => {
-        return <Answer key={index} content={item} />;
-      })}
-      <Button>Next</Button>
-    </Wrapper>
-  );
+  const { isLoaded, test, handleNext, index } = useContext(Context);
+  const history = useHistory();
+
+  const resultPath = () => {
+    history.push("/result");
+  };
+
+  if (!isLoaded) {
+    return <p>loading wait please</p>;
+  } else {
+    return (
+      <Wrapper>
+        <Question test={test} index={index} />
+        <Button onClick={index === 9 ? resultPath : handleNext}>
+          {index === 9 ? "See Result" : "Next"}
+        </Button>
+      </Wrapper>
+    );
+  }
 };
 
 export default Test;
