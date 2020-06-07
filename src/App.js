@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
+import Loading from "./components/Loading";
 import "./app.css";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -9,7 +10,7 @@ const Result = lazy(() => import("./pages/Result"));
 function App() {
   return (
     <div className="app">
-      <Suspense fallback={<div>loadin..</div>}>
+      <Suspense fallback={Loading}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/test" component={Test} />

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Question from "../components/Question";
 import Button from "../components/Button";
+import Loading from "../components/Loading";
 import Context from "../contexts/Context";
 import styled from "styled-components";
 
@@ -23,7 +24,7 @@ const Test = () => {
   };
 
   if (!isLoaded) {
-    return <p>loading wait please</p>;
+    return <Loading />;
   } else {
     return (
       <Wrapper>
