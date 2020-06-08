@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import createMarkup from "../utils/createMarkup";
+import Context from "../contexts/Context";
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -15,7 +16,13 @@ const Wrapper = styled.div`
 `;
 
 const Answer = ({ content }) => {
-  return <Wrapper dangerouslySetInnerHTML={createMarkup(content)} />;
+  const { handleSelect } = useContext(Context);
+  return (
+    <Wrapper
+      dangerouslySetInnerHTML={createMarkup(content)}
+      onClick={handleSelect}
+    />
+  );
 };
 
 export default Answer;

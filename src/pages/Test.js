@@ -18,8 +18,8 @@ const Wrapper = styled.div`
 const Test = () => {
   const { isLoaded, test, handleNext, index } = useContext(Context);
   const history = useHistory();
-
   const resultPath = () => {
+    handleNext();
     history.push("/result");
   };
 

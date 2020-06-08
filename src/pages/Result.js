@@ -4,7 +4,12 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import Context from "../contexts/Context";
 import styled from "styled-components";
-import img from "../imgs/smiley.png";
+import trophy from "../imgs/trophy.png";
+import shoked from "../imgs/shoked.png";
+import notBad from "../imgs/not-bad.png";
+import bad from "../imgs/bad.png";
+import smiley from "../imgs/smiley.png";
+import good from "../imgs/good.png";
 
 const Img = styled.img`
   display: block;
@@ -30,9 +35,11 @@ const Span = styled.span`
 `;
 
 const Result = () => {
-  const { reset } = useContext(Context);
+  const { reset, res } = useContext(Context);
   const history = useHistory();
 
+  const score = res.filter((el) => el === true).length;
+  console.log(res.length);
   const homePath = () => {
     reset();
     history.push("/");
@@ -41,10 +48,45 @@ const Result = () => {
   return (
     <>
       <Header>Result</Header>
-      <Img src={img} alt="trophy" />
-      <Text>Congrats</Text>
+
+      {score === 10 ? (
+        <>
+          <Img src={trophy} alt="trophy" />
+          <Text>Congrats</Text>
+        </>
+      ) : score === 0 ? (
+        <>
+          <Img src={shoked} alt="shoked" />
+          <Text>Are you Dumb, Crazy or Dump ?!</Text>
+        </>
+      ) : score > 0 && score < 5 ? (
+        <>
+          <Img src={bad} alt="bad" />
+          <Text>Very Bad</Text>
+        </>
+      ) : score === 5 || score === 6 ? (
+        <>
+          <Img src={notBad} alt="not bad" />
+          <Text>Not Bad</Text>
+        </>
+      ) : score === 7 ? (
+        <>
+          <Img src={good} alt="good" />
+          <Text>Good</Text>
+        </>
+      ) : score === 8 ? (
+        <>
+          <Img src={good} alt="very good" />
+          <Text>Very Good</Text>
+        </>
+      ) : (
+        <>
+          <Img src={smiley} alt="great" />
+          <Text>Great</Text>
+        </>
+      )}
       <Para>
-        <Span>10{""}</Span>/{""}10
+        <Span>{score}</Span>/{""}10
       </Para>
       <Button onClick={homePath}>Start Over</Button>
     </>

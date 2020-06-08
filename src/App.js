@@ -10,7 +10,7 @@ const Result = lazy(() => import("./pages/Result"));
 function App() {
   return (
     <div className="app">
-      <Suspense fallback={Loading}>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/test" component={Test} />

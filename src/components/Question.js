@@ -8,7 +8,7 @@ const QuestionNum = styled.p`
   color: #373d46;
   font-size: 24px;
   font-weight: 400;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 4px dashed #373d46;
 `;
@@ -21,12 +21,12 @@ const Quest = styled.p`
   font-size: 24px;
   font-weight: 600;
   min-height: 100px;
-  margin: 0;
+  margin: 0 0 8px 0;
   color: #f1f1f1;
   text-transform: capitalize;
 `;
 
-const Question = ({ test, index }) => {
+const Question = ({ test, index, onClick }) => {
   const { results } = test;
   const { type, correct_answer, incorrect_answers } = results[index];
   const { question } = results[index];
