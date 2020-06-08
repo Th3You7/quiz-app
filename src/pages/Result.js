@@ -39,7 +39,6 @@ const Result = () => {
   const history = useHistory();
 
   const score = res.filter((el) => el === true).length;
-  console.log(res.length);
   const homePath = () => {
     reset();
     history.push("/");
